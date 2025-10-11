@@ -1,66 +1,244 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📻 BPA Advert Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive advertisement management system built with Laravel and Filament for BPA Radio Station in Kiribati.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🎯 Core Functionality
+- **Advertisement Management**: Create, edit, and manage radio advertisements with time-specific broadcasting
+- **Customer Management**: Comprehensive customer database with contact information
+- **Gong Management**: Handle memorial announcements and tributes with file attachments
+- **Program Management**: Manage radio programs and scheduling
+- **Multi-band Support**: Handle both AM and FM broadcasts with flexible scheduling
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👥 User Management
+- **Admin Panel**: Full-featured Filament admin interface with role-based permissions
+- **Presenter Dashboard**: Dedicated interface for radio presenters with real-time content
+- **Activity Logging**: Comprehensive tracking of all system activities and user actions
+- **Authentication**: Secure login/logout with session tracking
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📊 Advanced Features
+- **PDF Export**: Generate professional PDF reports for advertisements and gongs
+- **File Attachments**: Upload and manage images and documents
+- **Time-specific Broadcasting**: Schedule content for Morning, Lunch, and Evening slots
+- **Reading Tracking**: Track presenter reading activities with detailed analytics
+- **Responsive Design**: Mobile-friendly interface for all user types
 
-## Learning Laravel
+### 🔒 Security & Monitoring
+- **Role-based Permissions**: Granular access control using Spatie Laravel Permission
+- **Activity Logging**: Track login/logout times, session duration, and IP addresses
+- **Audit Trail**: Complete history of all data changes and user activities
+- **Secure File Storage**: Organized file management with proper access controls
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Technology Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend**: Laravel 11.x
+- **Admin Panel**: Filament 3.x
+- **Database**: MySQL 8.0+
+- **PDF Generation**: DomPDF
+- **Authentication**: Laravel Sanctum
+- **Permissions**: Spatie Laravel Permission
+- **Activity Logging**: Spatie Laravel Activitylog
+- **File Storage**: Laravel Storage with public disk
+- **Frontend**: Blade templates with Tailwind CSS
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Installation
 
-## Laravel Sponsors
+### Prerequisites
+- PHP 8.1 or higher
+- Composer
+- MySQL 5.7+ or MariaDB 10.3+
+- Node.js and NPM (for asset compilation)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Setup Steps
 
-### Premium Partners
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tetmkamatie/BPA-Advert-Management-System.git
+   cd BPA-Advert-Management-System
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-## Contributing
+3. **Environment configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. **Configure database in `.env`**
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=advert_management
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   
+   APP_TIMEZONE=Pacific/Tarawa
+   ```
 
-## Code of Conduct
+5. **Database setup**
+   ```bash
+   php artisan migrate
+   php artisan db:seed --class=ProductionAdminSeeder
+   php artisan db:seed --class=PresenterSeeder
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. **Storage and permissions**
+   ```bash
+   php artisan storage:link
+   php artisan shield:generate --all
+   ```
 
-## Security Vulnerabilities
+7. **Start development server**
+   ```bash
+   php artisan serve
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🔑 Default Access Credentials
 
-## License
+### Admin Panel
+- **URL**: `http://localhost:8000/admin`
+- **Email**: `admin@admin.com`
+- **Password**: `password`
+- **Permissions**: Full system access
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Presenter Dashboard
+- **URL**: `http://localhost:8000/presenter/login`
+- **Test Accounts**:
+  - Morning Shift: `john.morning@example.com` / `password`
+  - Lunch Shift: `sarah.lunch@example.com` / `password`
+  - Evening Shift: `mike.evening@example.com` / `password`
+
+## 📁 Project Structure
+
+```
+app/
+├── Filament/Resources/          # Admin panel resources
+├── Http/Controllers/            # Application controllers
+├── Models/                      # Eloquent models
+├── Policies/                    # Authorization policies
+├── Console/Commands/            # Artisan commands
+└── Services/                    # Business logic services
+
+resources/
+├── views/presenter/             # Presenter dashboard views
+└── views/pdf/                   # PDF templates
+
+database/
+├── migrations/                  # Database migrations
+└── seeders/                     # Database seeders
+
+public/
+├── images/                      # Static images (logos, etc.)
+└── storage/                     # Symlink to storage/app/public
+```
+
+## 🎯 Key Features Breakdown
+
+### Advertisement Management
+- Create and manage radio advertisements
+- Time-specific frequency settings (Morning, Lunch, Evening)
+- Multi-band broadcasting (AM/FM)
+- Customer association and billing
+- PDF export functionality
+
+### Presenter Dashboard
+- Real-time content display based on current time slot
+- Mark advertisements and gongs as read
+- Track reading progress and frequency
+- Responsive design for various devices
+
+### Activity Logging
+- User login/logout tracking with session duration
+- IP address and browser information
+- Complete audit trail of all data changes
+- Presenter activity monitoring
+
+### File Management
+- Secure file uploads for advertisements and gongs
+- Organized storage in dedicated directories
+- Support for images and PDF documents
+- Public access URLs for uploaded files
+
+## 🔧 Configuration
+
+### Timezone Settings
+The system is configured for Kiribati timezone (`Pacific/Tarawa`). Update in `.env`:
+```env
+APP_TIMEZONE=Pacific/Tarawa
+```
+
+### File Storage
+Files are stored in `storage/app/public/` with organized subdirectories:
+- `ads/` - Advertisement attachments
+- `gongs/` - Memorial attachments
+
+### Broadcasting Schedule
+- **Morning**: 6:00 AM - 8:00 AM
+- **Lunch**: 12:00 PM - 2:00 PM  
+- **Evening**: 6:00 PM - 8:00 PM
+
+## 🧪 Testing
+
+### Run Test Commands
+```bash
+# Test presenter activity logging
+php artisan test:presenter-activity-log
+
+# Test gong attachment functionality
+php artisan test:gong-attachment
+
+# Test admin access and permissions
+php artisan admin:test
+```
+
+### Manual Testing
+1. Access admin panel and create test data
+2. Login to presenter dashboard and interact with content
+3. Check activity logs for proper tracking
+4. Test file uploads in gong and advertisement forms
+
+## 📈 Monitoring & Analytics
+
+### Activity Logs
+- Access via Admin Panel → Activity Logs
+- Filter by log type (presenter_auth, presenter, advertisement, etc.)
+- View detailed session information and user activities
+
+### Presenter Analytics
+- Track reading frequencies and completion rates
+- Monitor login patterns and session durations
+- Generate reports on presenter activity
+
+## 🔒 Security Features
+
+- Role-based access control with granular permissions
+- Session management with automatic timeout
+- IP address tracking for security monitoring
+- Secure file upload with type validation
+- CSRF protection on all forms
+- SQL injection prevention through Eloquent ORM
+
+## 🤝 Contributing
+
+This is a proprietary system developed specifically for BPA Radio Station. For feature requests or bug reports, please contact the development team.
+
+## 📄 License
+
+This project is proprietary software developed for BPA Radio Station, Kiribati. All rights reserved.
+
+## 📞 Support
+
+For technical support or questions about the system, please contact:
+- **Developer**: Tetiarahi Mathew
+- **Email**: tetmkamatie@gmail.com
+- **Organization**: BPA Radio Station
+
+---
+
+**Built with ❤️ for BPA Radio Station, Kiribati** 🇰🇮
