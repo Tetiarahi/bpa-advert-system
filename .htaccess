@@ -1,0 +1,18 @@
+# Local Development - Simple .htaccess
+# This file is for local development only
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect to public folder for local development
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
+
+# Basic security for local development
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>

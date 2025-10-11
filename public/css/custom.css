@@ -1,0 +1,238 @@
+/* Custom BPA Styling */
+
+/* Dark Mode Improvements */
+.dark .fi-simple-layout {
+    background: #111827 !important;
+}
+
+.dark .fi-simple-main {
+    background: #1f2937 !important;
+}
+
+/* Logo Styling */
+.bpa-logo {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+.dark .bpa-logo {
+    background: #374151;
+    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+}
+
+/* Form Section Styling */
+.fi-section {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.dark .fi-section {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.fi-section-header {
+    background: #f9fafb;
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .fi-section-header {
+    background: #374151;
+    border-bottom-color: #4b5563;
+}
+
+.fi-section-header-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.dark .fi-section-header-heading {
+    color: #f9fafb;
+}
+
+.fi-section-header-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.dark .fi-section-header-description {
+    color: #d1d5db;
+}
+
+.fi-section-content {
+    padding: 1.5rem;
+}
+
+/* Enhanced Form Fields */
+.fi-input {
+    transition: all 0.2s ease-in-out;
+}
+
+.fi-input:focus {
+    ring: 2px solid #3b82f6;
+    ring-opacity: 0.5;
+    border-color: #3b82f6;
+}
+
+/* Dashboard Widget Styling */
+.fi-wi-stats-overview-stat {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease-in-out;
+}
+
+.dark .fi-wi-stats-overview-stat {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.fi-wi-stats-overview-stat:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .fi-wi-stats-overview-stat:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+/* Button Enhancements */
+.fi-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.fi-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Badge Styling */
+.fi-badge {
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+}
+
+/* Table Dark Mode */
+.dark .fi-ta-table {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.dark .fi-ta-header-cell {
+    background: #374151;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+.dark .fi-ta-cell {
+    border-color: #374151;
+    color: #e5e7eb;
+}
+
+/* Input Dark Mode */
+.dark .fi-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+}
+
+.dark .fi-input:focus {
+    border-color: #3b82f6;
+    background: #1f2937;
+}
+
+/* Sidebar Dark Mode */
+.dark .fi-sidebar {
+    background: #111827;
+    border-color: #374151;
+}
+
+.dark .fi-sidebar-nav-item {
+    color: #d1d5db;
+}
+
+.dark .fi-sidebar-nav-item:hover {
+    background: #1f2937;
+    color: #f9fafb;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Text Contrast Improvements */
+.dark .fi-fo-field-wrp-label {
+    color: #f3f4f6 !important;
+}
+
+.dark .fi-fo-field-wrp-hint {
+    color: #d1d5db !important;
+}
+
+.dark .fi-ta-text {
+    color: #e5e7eb !important;
+}
+
+.dark .fi-ta-text-item-label {
+    color: #f9fafb !important;
+}
+
+/* Form Field Labels */
+.dark label {
+    color: #f3f4f6 !important;
+}
+
+.dark .fi-fo-field-wrp > label {
+    color: #f3f4f6 !important;
+}
+
+/* Select and Input Improvements */
+.dark .fi-select-input {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+}
+
+.dark .fi-select-input:focus {
+    border-color: #3b82f6 !important;
+    background: #1f2937 !important;
+}
+
+/* Toggle Improvements */
+.dark .fi-toggle-input {
+    background: #374151 !important;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .fi-section-content {
+        padding: 1rem;
+    }
+
+    .fi-section-header {
+        padding: 0.75rem 1rem;
+    }
+}
