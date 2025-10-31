@@ -220,13 +220,19 @@
     </style>
 </head>
 <body>
+    @php
+        $path = public_path('images/bpa-logo.png');
+        $logo = base64_encode(file_get_contents($path));
+    @endphp
     <div class="header">
         <div class="logo">
-            <div class="logo-fallback">
-                <img src="{{ asset('images/bpa-logo.png') }}" alt="BPA Logo">
+            <img src="data:image/png;base64,{{ $logo }}" alt="BPA Logo" style="width:100px; height:100px;">
+            {{-- <img src="{{ asset('images/bpa-logo.png') }}" alt="BPA Logo"> --}}
+            {{-- <div class="logo-fallback">
+                <img src="{{ asset('images/bpa-logo.png') }}" alt="BPA Logo"> --}}
                 {{-- <div class="bpa-text">BPA</div>
                 <div class="org-text">BROADCASTING &<br>PUBLICATIONS<br>AUTHORITY</div> --}}
-            </div>
+            {{-- </div> --}}
         </div>
         <div class="organization-name">Broadcasting & Publications Authority</div>
         <div class="document-title">Memorial Record</div>
