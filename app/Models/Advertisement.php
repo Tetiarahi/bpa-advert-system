@@ -32,6 +32,7 @@ class Advertisement extends Model
         'is_paid',
         'amount',
         'attachment',
+        'is_read',
     ];
 
     protected $casts = [
@@ -44,6 +45,7 @@ class Advertisement extends Model
         'lunch_times' => 'array',
         'evening_times' => 'array',
         'is_paid' => 'boolean',
+        'is_read' => 'boolean',
         'band' => 'array',
     ];
     public function customer()

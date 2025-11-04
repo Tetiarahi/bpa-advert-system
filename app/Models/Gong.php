@@ -30,6 +30,7 @@ class Gong extends Model
         'amount',
         'is_paid',
         'attachment',
+        'is_read',
     ];
 
     protected $casts = [
@@ -43,6 +44,7 @@ class Gong extends Model
         'lunch_times' => 'array',
         'evening_times' => 'array',
         'is_paid' => 'boolean',
+        'is_read' => 'boolean',
     ];
     public function customer()
     {

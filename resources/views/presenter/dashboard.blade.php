@@ -2376,5 +2376,8 @@
             setTimeout(checkForNewContent, 5000);
         });
     </script>
+
+    <!-- Content Form Module -->
+    <script src="{{ asset('js/content-form.js') }}"></script>
 </body>
 </html>

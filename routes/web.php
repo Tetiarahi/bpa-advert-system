@@ -5,6 +5,7 @@ use App\Models\Gong;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\PresenterAuthController;
 use App\Http\Controllers\PresenterDashboardController;
+use App\Http\Controllers\ContentFormController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,5 +45,11 @@ Route::prefix('presenter')->group(function () {
         Route::get('/time-slot-content', [PresenterDashboardController::class, 'getTimeSlotContent'])->name('presenter.time-slot-content');
         Route::get('/debug-readings', [PresenterDashboardController::class, 'debugReadings'])->name('presenter.debug-readings');
         Route::get('/reload-section/{sectionType}', [PresenterDashboardController::class, 'reloadSection'])->name('presenter.reload-section');
+
+        // Content Form Routes
+        Route::post('/content-form/tick', [ContentFormController::class, 'tick'])->name('presenter.content-form.tick');
+        Route::post('/content-form/untick', [ContentFormController::class, 'untick'])->name('presenter.content-form.untick');
+        Route::get('/content-form/{id}', [ContentFormController::class, 'show'])->name('presenter.content-form.show');
+        Route::get('/content-forms', [ContentFormController::class, 'getPresenterForms'])->name('presenter.content-forms');
     });
 });

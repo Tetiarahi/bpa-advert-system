@@ -11,20 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // First, drop the existing unique constraint
-        Schema::table('presenter_read_statuses', function (Blueprint $table) {
-            $table->dropUnique('presenter_content_timeslot_unique');
-        });
+        // Check if column already exists
+        if (!Schema::hasColumn('presenter_read_statuses', 'reading_number')) {
+            // First, drop the existing unique constraint
+            Schema::table('presenter_read_statuses', function (Blueprint $table) {
+                try {
+                    $table->dropUnique('presenter_content_timeslot_unique');
+                } catch (\Exception) {
+                    // Constraint might not exist
+                }
+            });
 
-        // Add the reading_number field
-        Schema::table('presenter_read_statuses', function (Blueprint $table) {
-            $table->tinyInteger('reading_number')->default(1)->after('time_slot');
-        });
+            // Add the reading_number field
+            Schema::table('presenter_read_statuses', function (Blueprint $table) {
+                $table->tinyInteger('reading_number')->default(1)->after('time_slot');
+            });
 
-        // Add new unique constraint that includes reading_number
-        Schema::table('presenter_read_statuses', function (Blueprint $table) {
-            $table->unique(['presenter_id', 'content_type', 'content_id', 'time_slot', 'reading_number'], 'presenter_content_timeslot_reading_unique');
-        });
+            // Add new unique constraint that includes reading_number
+            Schema::table('presenter_read_statuses', function (Blueprint $table) {
+                $table->unique(['presenter_id', 'content_type', 'content_id', 'time_slot', 'reading_number'], 'presenter_content_timeslot_reading_unique');
+            });
+        }
     }
 
     /**
