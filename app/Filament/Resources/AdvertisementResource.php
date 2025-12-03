@@ -278,25 +278,32 @@ class AdvertisementResource extends Resource
                 Tables\Columns\TextColumn::make('customer.fullname')
                     ->label('Customer')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->wrap()
+                    ->limit(12),
                 Tables\Columns\TextColumn::make('adsCategory.name')
                     ->label('Category')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false)
+                    ->limit(10),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable()
-                    ->limit(20),
+                    ->limit(12)
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('issued_date')
                     ->label('Issue Date')
                     ->date('M d, Y')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('customer_type')
                     ->color(fn (string $state): string => match ($state) {
                         'Private' => 'gray',
                         'local_business' => 'warning',
                         'GOK_NGO' => 'success',
-                    }),
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('band')
                     ->badge()
                     ->formatStateUsing(function ($state) {
@@ -330,15 +337,18 @@ class AdvertisementResource extends Resource
                             'Uekera' => 'danger',
                             default => 'gray',
                         };
-                    }),
+                    })
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('broadcast_start_date')
                     ->label('Start Date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('broadcast_end_date')
                     ->label('End Date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('broadcast_schedule')
                     ->label('Broadcast Schedule')
                     ->getStateUsing(function ($record) {
@@ -358,7 +368,8 @@ class AdvertisementResource extends Resource
                     ->badge()
                     ->color('info')
                     ->sortable(false)
-                    ->searchable(false),
+                    ->searchable(false)
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('total_daily_frequency')
                     ->label('Total/Day')
                     ->getStateUsing(function ($record) {
@@ -370,13 +381,16 @@ class AdvertisementResource extends Resource
                     ->badge()
                     ->color('success')
                     ->sortable(false)
-                    ->searchable(false),
+                    ->searchable(false)
+                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_paid')
                     ->boolean()
-                    ->label('Paid'),
+                    ->label('Paid')
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('amount')
                     ->money(currency: 'AUD')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('attachment')
                     ->label('Attachment')
                     ->formatStateUsing(fn (string $state): string => $state ? 'View File' : 'No File')
@@ -412,7 +426,8 @@ class AdvertisementResource extends Resource
                                     ->visible(fn (Advertisement $record): bool => (bool) $record->attachment),
                             ])
                             ->visible(fn (Advertisement $record): bool => (bool) $record->attachment)
-                    ),
+                    )
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('created_at')
                     ->dateTime()

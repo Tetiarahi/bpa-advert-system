@@ -274,24 +274,31 @@ class GongResource extends Resource
                 Tables\Columns\TextColumn::make('customer.fullname')
                     ->label('Customer')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->wrap()
+                    ->limit(12),
                 Tables\Columns\TextColumn::make('departed_name')
                     ->label('Departed Name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->wrap()
+                    ->limit(12),
                 Tables\Columns\TextColumn::make('death_date')
                     ->badge()
                     ->label('Death Date')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('broadcast_start_date')
                     ->label('Start Date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('broadcast_end_date')
                     ->label('End Date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('band_display')
                     ->label('Band')
                     ->badge()
@@ -319,7 +326,8 @@ class GongResource extends Resource
                             'Both' => 'success',
                             default => 'gray',
                         };
-                    }),
+                    })
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('broadcast_schedule')
                     ->label('Broadcast Schedule')
                     ->getStateUsing(function ($record) {
@@ -339,7 +347,8 @@ class GongResource extends Resource
                     ->badge()
                     ->color('info')
                     ->sortable(false)
-                    ->searchable(false),
+                    ->searchable(false)
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('total_daily_frequency')
                     ->label('Total/Day')
                     ->getStateUsing(function ($record) {
@@ -351,20 +360,24 @@ class GongResource extends Resource
                     ->badge()
                     ->color('success')
                     ->sortable(false)
-                    ->searchable(false),
+                    ->searchable(false)
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('song_title')
                     ->label('Song Title')
                     ->searchable()
                     ->wrap()
-                    ->limit(20)
-                    ->sortable(),
+                    ->limit(12)
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('amount')
                     ->label('Amount')
                     ->formatStateUsing(fn (string $state): string => 'AUD ' . number_format($state, 2))
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\IconColumn::make('is_paid')
                     ->boolean()
-                    ->label('Paid'),
+                    ->label('Paid')
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('attachment')
                     ->label('Attachment')
                     ->formatStateUsing(fn (string $state): string => $state ? 'View File' : 'No File')
@@ -400,7 +413,8 @@ class GongResource extends Resource
                                     ->visible(fn (Gong $record): bool => (bool) $record->attachment),
                             ])
                             ->visible(fn (Gong $record): bool => (bool) $record->attachment)
-                    ),
+                    )
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

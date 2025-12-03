@@ -123,6 +123,81 @@
     font-size: 0.75rem;
 }
 
+/* Table Compact Styling */
+.fi-ta-table {
+    font-size: 0.875rem;
+}
+
+.fi-ta-header-cell,
+.fi-ta-cell {
+    padding: 0.5rem 0.75rem !important;
+}
+
+.fi-ta-header-cell {
+    padding: 0.5rem 0.75rem !important;
+}
+
+.fi-ta-cell {
+    padding: 0.5rem 0.75rem !important;
+}
+
+/* Reduce column spacing */
+.fi-ta-col {
+    min-width: auto !important;
+}
+
+/* Make table scrollable container more compact */
+.fi-ta-ctn {
+    overflow-x: auto;
+}
+
+/* Reduce badge padding */
+.fi-badge {
+    padding: 0.125rem 0.5rem !important;
+    font-size: 0.75rem !important;
+}
+
+/* Reduce icon column width */
+.fi-ta-cell.fi-ta-icon-col {
+    width: auto !important;
+    padding: 0.5rem 0.5rem !important;
+}
+
+/* Make table fit without horizontal scroll */
+.fi-ta-ctn {
+    overflow-x: visible !important;
+}
+
+.fi-ta {
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* Reduce text column widths */
+.fi-ta-col-text {
+    max-width: 120px !important;
+}
+
+/* Reduce badge column widths */
+.fi-ta-col-badge {
+    max-width: 100px !important;
+}
+
+/* Reduce icon column widths */
+.fi-ta-col-icon {
+    max-width: 50px !important;
+}
+
+/* Reduce money column widths */
+.fi-ta-col-money {
+    max-width: 100px !important;
+}
+
+/* Reduce date column widths */
+.fi-ta-col-date {
+    max-width: 90px !important;
+}
+
 /* Table Dark Mode */
 .dark .fi-ta-table {
     background: #1f2937;
