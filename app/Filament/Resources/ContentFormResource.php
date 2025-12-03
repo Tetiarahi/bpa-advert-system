@@ -21,6 +21,7 @@ class ContentFormResource extends Resource
     protected static ?string $modelLabel = 'Content Form';
     protected static ?string $pluralModelLabel = 'Content Forms';
     protected static ?int $navigationSort = 8;
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function canViewAny(): bool
     {

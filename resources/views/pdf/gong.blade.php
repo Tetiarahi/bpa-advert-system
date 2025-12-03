@@ -235,7 +235,7 @@
             {{-- </div> --}}
         </div>
         <div class="organization-name">Broadcasting & Publications Authority</div>
-        <div class="document-title">Memorial Record</div>
+        <div class="document-title">Memorial Announced Record</div>
     </div>
 
     <div class="print-info">
@@ -403,7 +403,7 @@
     </div>
 
     <div class="footer">
-        <div>Broadcasting & Publications Authority - Gong Memorial Services</div>
+        <div>Broadcasting & Publications Authority - Gong </div>
         <div>This document was generated electronically and is valid without signature</div>
     </div>
 </body>

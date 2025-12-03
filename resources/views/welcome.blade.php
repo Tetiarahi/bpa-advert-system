@@ -37,16 +37,9 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <a href="{{ route('presenter.login.form') }}"
-                       class="bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 transition duration-200 shadow-md hover:shadow-lg flex items-center space-x-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span>Presenter Login</span>
-                    </a>
                     <a href="/admin/login"
                        class="bg-blue-800 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-200 shadow-md hover:shadow-lg">
-                        Admin Login
+                        Login
                     </a>
                 </div>
             </div>
@@ -70,14 +63,14 @@
                     <span class="text-blue-200">Management System</span>
                 </h1>
 
-                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                {{-- <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
                     Streamline your radio advertisement operations with our comprehensive management platform designed for the Broadcasting & Publications Authority.
-                </p>
+                </p> --}}
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="/admin/login"
                        class="bg-white text-blue-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-                        Access Admin Panel
+                        Access Panel
                     </a>
                     <a href="#features"
                        class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-800 transition duration-200">
@@ -219,14 +212,14 @@
     <!-- CTA Section -->
     <section class="bg-blue-800 text-white py-20">
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+            <h2 class="text-4xl font-bold mb-6">BPA Advertisement Management System</h2>
             <p class="text-xl mb-8 text-blue-100">
-                Access the BPA Advertisement Management System and streamline your radio advertisement operations today.
+                Access the BPA Advertisement Management System .
             </p>
 
             <a href="/admin/login"
                class="bg-white text-blue-800 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block">
-                Login to Admin Panel
+                Login
             </a>
         </div>
     </section>
@@ -245,7 +238,7 @@
                         </div>
                     </div>
                     <p class="text-gray-400">
-                        Professional advertisement management system for radio broadcasting services and memorial programs.
+                        Professional advertisement management system for radio broadcasting services.
                     </p>
                 </div>
 
@@ -254,7 +247,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li>Advertisement Management</li>
                         <li>Program Sponsorship</li>
-                        <li>Memorial Services</li>
+                        <li>Memorial Advertisement</li>
                         <li>Customer Database</li>
                         <li>Professional Reporting</li>
                     </ul>
@@ -264,8 +257,8 @@
                     <h4 class="text-lg font-semibold mb-4">Contact Information</h4>
                     <div class="space-y-2 text-gray-400">
                         <p>Broadcasting & Publications Authority</p>
-                        <p>Radio Advertisement Division</p>
-                        <p>Professional Services Department</p>
+                        <p>Program and Publication Division</p>
+                        {{-- <p>Professional Services Department</p> --}}
                     </div>
                 </div>
             </div>

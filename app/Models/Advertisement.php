@@ -100,6 +100,22 @@ class Advertisement extends Model
         return $content;
     }
 
+    // Accessors for frequency shorthand (morning_freq, lunch_freq, evening_freq)
+    public function getMorningFreqAttribute()
+    {
+        return $this->morning_frequency ?? 0;
+    }
+
+    public function getLunchFreqAttribute()
+    {
+        return $this->lunch_frequency ?? 0;
+    }
+
+    public function getEveningFreqAttribute()
+    {
+        return $this->evening_frequency ?? 0;
+    }
+
     // Accessor for export-friendly band display
     public function getBandDisplayAttribute()
     {
