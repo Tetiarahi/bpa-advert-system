@@ -154,7 +154,7 @@ class Advertisement extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['customer_id', 'customer_type', 'ads_category_id', 'band', 'title', 'content', 'issued_date', 'is_paid', 'amount'])
+            ->logOnly(['customer_id', 'customer_type', 'ads_category_id', 'title', 'content', 'issued_date', 'is_paid', 'amount'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(fn(string $eventName) => "Advertisement {$eventName}")

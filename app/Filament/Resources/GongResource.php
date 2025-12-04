@@ -425,12 +425,21 @@ class GongResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('band')
-                    ->options([
-                        'AM' => 'AM',
-                        'FM' => 'FM',
-                        'Both' => 'Both',
-                    ]),
+                Tables\Filters\Filter::make('band')
+                    ->form([
+                        Forms\Components\Select::make('band')
+                            ->options([
+                                'AM' => 'AM',
+                                'FM' => 'FM',
+                            ])
+                            ->placeholder('Select Band'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query->when(
+                            $data['band'] ?? null,
+                            fn (Builder $query, $band): Builder => $query->whereJsonContains('band', $band)
+                        );
+                    }),
                 Tables\Filters\Filter::make('has_morning_broadcasts')
                     ->label('Has Morning Broadcasts')
                     ->query(fn (Builder $query): Builder => $query->where('morning_frequency', '>', 0)),

@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogoHeight('2.5rem')
             ->favicon(asset('images/bpa-logo.png'))
             ->sidebarCollapsibleOnDesktop()
+            ->sidebarFullyCollapsibleOnDesktop()
             ->colors([
                 'primary' => Color::Blue,
                 'secondary' => Color::Red,
@@ -41,9 +42,22 @@ class AdminPanelProvider extends PanelProvider
                 'danger' => Color::Red,
                 'info' => Color::Blue,
             ])
+            ->maxContentWidth('full')
             ->renderHook(
-                'panels::head.end',
-                fn (): string => '<link rel="stylesheet" href="' . asset('css/custom.css') . '">'
+                // 'panels::head.end',
+                // fn (): string => '<link rel="stylesheet" href="' . asset('css/custom.css') . '">'
+                 'panels::body.end',
+                fn (): string => '
+                    <style>
+                        .fi-main { max-width: 100% !important; }
+                        .filament-tables-container { width: 100% !important; }
+                        table.filament-tables-table {
+                            width: 100% !important;
+                            table-layout: auto !important;
+                        }
+                        .fi-main-ctn { overflow-x: hidden !important; }
+                    </style>
+                '
             )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -75,5 +89,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+
+
     }
 }

@@ -195,7 +195,7 @@ class Gong extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['customer_id', 'departed_name', 'death_date', 'published_date', 'band', 'contents', 'song_title', 'amount', 'is_paid'])
+            ->logOnly(['customer_id', 'departed_name', 'death_date', 'published_date', 'contents', 'song_title', 'amount', 'is_paid'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(fn(string $eventName) => "Gong {$eventName}")

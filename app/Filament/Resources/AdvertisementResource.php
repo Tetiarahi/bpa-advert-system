@@ -274,6 +274,7 @@ class AdvertisementResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            // ->contentwidth('full')
             ->columns([
                 Tables\Columns\TextColumn::make('customer.fullname')
                     ->label('Customer')
@@ -445,12 +446,21 @@ class AdvertisementResource extends Resource
                         'local_business' => 'Local Business',
                         'GOK_NGO' => 'GOK/NGO',
                     ]),
-                SelectFilter::make('band')
-                    ->options([
-                        'AM' => 'AM',
-                        'FM' => 'FM',
-                        'AM & FM' => 'AM & FM',
-                    ]),
+                Filter::make('band')
+                    ->form([
+                        Forms\Components\Select::make('band')
+                            ->options([
+                                'AM' => 'AM',
+                                'FM' => 'FM',
+                            ])
+                            ->placeholder('Select Band'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query->when(
+                            $data['band'] ?? null,
+                            fn (Builder $query, $band): Builder => $query->whereJsonContains('band', $band)
+                        );
+                    }),
                 SelectFilter::make('ads_category_id')
                     ->relationship('adsCategory', 'name')
                     ->label('Category'),
@@ -621,6 +631,7 @@ class AdvertisementResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+
     }
 
     public static function infolist(Infolist $infolist): Infolist
