@@ -73,8 +73,7 @@ class ActivityLogResource extends Resource
                         'gong' => 'warning',
                         'customer' => 'success',
                         'ads_category' => 'primary',
-                        'presenter' => 'purple',
-                        'presenter_auth' => 'orange',
+
                         default => 'gray',
                     })
                     ->searchable()
@@ -110,8 +109,6 @@ class ActivityLogResource extends Resource
                         'gong' => 'Gong',
                         'customer' => 'Customer',
                         'ads_category' => 'Ads Category',
-                        'presenter' => 'Presenter',
-                        'presenter_auth' => 'Presenter Authentication',
                     ]),
                 SelectFilter::make('event')
                     ->label('Action')
@@ -164,8 +161,6 @@ class ActivityLogResource extends Resource
                                 'gong' => 'warning',
                                 'customer' => 'success',
                                 'ads_category' => 'primary',
-                                'presenter' => 'purple',
-                                'presenter_auth' => 'orange',
                                 default => 'gray',
                             }),
                         TextEntry::make('description')
@@ -206,31 +201,6 @@ class ActivityLogResource extends Resource
                     ])
                     ->columns(2),
 
-                Section::make('Authentication Details')
-                    ->schema([
-                        TextEntry::make('properties.ip_address')
-                            ->label('IP Address')
-                            ->default('N/A'),
-                        TextEntry::make('properties.shift')
-                            ->label('Presenter Shift')
-                            ->default('N/A'),
-                        TextEntry::make('properties.login_time')
-                            ->label('Login Time')
-                            ->default('N/A'),
-                        TextEntry::make('properties.logout_time')
-                            ->label('Logout Time')
-                            ->default('N/A'),
-                        TextEntry::make('properties.session_duration_minutes')
-                            ->label('Session Duration (minutes)')
-                            ->default('N/A'),
-                        TextEntry::make('properties.user_agent')
-                            ->label('Browser/Device')
-                            ->formatStateUsing(fn ($state) => $state ? substr($state, 0, 100) . '...' : 'N/A')
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2)
-                    ->visible(fn ($record) => $record->log_name === 'presenter_auth'),
-
                 Section::make('Changes')
                     ->schema([
                         TextEntry::make('properties.attributes')
@@ -242,8 +212,7 @@ class ActivityLogResource extends Resource
                             ->formatStateUsing(fn ($state) => $state ? json_encode($state, JSON_PRETTY_PRINT) : 'No data')
                             ->columnSpanFull(),
                     ])
-                    ->collapsible()
-                    ->visible(fn ($record) => $record->log_name !== 'presenter_auth'),
+                    ->collapsible(),
             ]);
     }
 

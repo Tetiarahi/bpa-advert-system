@@ -11,10 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias([
-            'presenter.auth' => \App\Http\Middleware\PresenterAuth::class,
-            'presenter.activity' => \App\Http\Middleware\PresenterActivityLogger::class,
-        ]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

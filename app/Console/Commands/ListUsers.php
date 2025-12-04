@@ -68,20 +68,6 @@ class ListUsers extends Command
 
         $this->table($headers, $rows);
 
-        // Show presenter accounts specifically
-        $presenters = User::role('presenter')->get();
-        if ($presenters->count() > 0) {
-            $this->info('');
-            $this->info('🎙️ Presenter Accounts:');
-            foreach ($presenters as $presenter) {
-                $this->info("  • {$presenter->name} ({$presenter->email})");
-            }
-        } else {
-            $this->warn('');
-            $this->warn('⚠️  No presenter accounts found!');
-            $this->info('Run: php artisan presenter:create to create one');
-        }
-
         $this->info('');
         $this->info('🔐 Admin Panel: http://localhost:8000/admin');
     }
